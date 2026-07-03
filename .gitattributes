@@ -1,80 +1,32 @@
-###############################################################################
-# Set default behavior to automatically normalize line endings.
-###############################################################################
-* text=auto
-
-###############################################################################
-# Set default behavior for command prompt diff.
-#
-# This is need for earlier builds of msysgit that does not have it on by
-# default for csharp files.
-# Note: This is only used by command line
-###############################################################################
-#*.cs     diff=csharp
-
-###############################################################################
-# Set the merge driver for project and solution files
-#
-# Merging from the command prompt will add diff markers to the files if there
-# are conflicts (Merging from VS is not affected by the settings below, in VS
-# the diff markers are never inserted). Diff markers may cause the following 
-# file extensions to fail to load in VS. An alternative would be to treat
-# these files as binary and thus will always conflict and require user
-# intervention with every merge. To do so, just uncomment the entries below
-###############################################################################
-#*.sln       merge=binary
-#*.csproj    merge=binary
-#*.vbproj    merge=binary
-#*.vcxproj   merge=binary
-#*.vcproj    merge=binary
-#*.dbproj    merge=binary
-#*.fsproj    merge=binary
-#*.lsproj    merge=binary
-#*.wixproj   merge=binary
-#*.modelproj merge=binary
-#*.sqlproj   merge=binary
-#*.wwaproj   merge=binary
-
-###############################################################################
-# behavior for image files
-#
-# image files are treated as binary by default.
-###############################################################################
-#*.jpg   binary
-#*.png   binary
-#*.gif   binary
-
-###############################################################################
-# diff behavior for common document formats
-# 
-# Convert binary document formats to text before diffing them. This feature
-# is only available from the command line. Turn it on by uncommenting the 
-# entries below.
-###############################################################################
-#*.doc   diff=astextplain
-#*.DOC   diff=astextplain
-#*.docx  diff=astextplain
-#*.DOCX  diff=astextplain
-#*.dot   diff=astextplain
-#*.DOT   diff=astextplain
-#*.pdf   diff=astextplain
-#*.PDF   diff=astextplain
-#*.rtf   diff=astextplain
-#*.RTF   diff=astextplain
-
 # GitHub language detection düzenlemesi
-# Hazır template, kütüphane ve statik dosyaları dil yüzdesinden ayırır.
+# Hazır template, Bootstrap, statik dosyalar ve Razor view dosyaları dil yüzdesinden çıkarılır.
+# Böylece ASP.NET Core / C# tabanlı projeler GitHub üzerinde daha doğru görünür.
 
-wwwroot/lib/** linguist-vendored
-wwwroot/css/** linguist-vendored
-wwwroot/js/** linguist-vendored
-wwwroot/img/** linguist-vendored
-wwwroot/webfonts/** linguist-vendored
-wwwroot/Admin/** linguist-vendored
-wwwroot/userTemplate/** linguist-vendored
+**/wwwroot/lib/** linguist-vendored
+**/wwwroot/css/** linguist-vendored
+**/wwwroot/js/** linguist-vendored
+**/wwwroot/img/** linguist-vendored
+**/wwwroot/images/** linguist-vendored
+**/wwwroot/webfonts/** linguist-vendored
+**/wwwroot/fonts/** linguist-vendored
+**/wwwroot/Admin/** linguist-vendored
+**/wwwroot/assets/** linguist-vendored
+**/wwwroot/template/** linguist-vendored
+**/wwwroot/userTemplate/** linguist-vendored
 
 **/*.min.css linguist-vendored
 **/*.min.js linguist-vendored
 **/*.map linguist-vendored
+
 **/bootstrap/** linguist-vendored
 **/jquery/** linguist-vendored
+**/fontawesome/** linguist-vendored
+
+**/Views/**/*.cshtml linguist-vendored
+**/Areas/**/Views/**/*.cshtml linguist-vendored
+**/Pages/**/*.cshtml linguist-vendored
+
+**/*.html linguist-vendored
+**/*.css linguist-vendored
+**/*.scss linguist-vendored
+**/*.js linguist-vendored
