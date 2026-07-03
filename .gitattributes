@@ -61,3 +61,20 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# GitHub language detection düzenlemesi
+# Hazır template, kütüphane ve statik dosyaları dil yüzdesinden ayırır.
+
+wwwroot/lib/** linguist-vendored
+wwwroot/css/** linguist-vendored
+wwwroot/js/** linguist-vendored
+wwwroot/img/** linguist-vendored
+wwwroot/webfonts/** linguist-vendored
+wwwroot/Admin/** linguist-vendored
+wwwroot/userTemplate/** linguist-vendored
+
+**/*.min.css linguist-vendored
+**/*.min.js linguist-vendored
+**/*.map linguist-vendored
+**/bootstrap/** linguist-vendored
+**/jquery/** linguist-vendored
