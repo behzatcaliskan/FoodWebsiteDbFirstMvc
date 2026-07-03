@@ -1,0 +1,51 @@
+﻿@model YemekSitesiDbFirst.Models.Yemekler
+
+@{
+    ViewData["Title"] = "Yemek Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Yemek Sil</h1>
+
+<div class="alert alert-danger">
+    Bu yemeği silmek istediğine emin misin?
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Yemek ID</th>
+        <td>@Model.YemekId</td>
+    </tr>
+
+    <tr>
+        <th>Yemek Adı</th>
+        <td>@Model.YemekAd</td>
+    </tr>
+
+    <tr>
+        <th>Kategori</th>
+        <td>@Model.Kategori?.KategoriAd</td>
+    </tr>
+
+    <tr>
+        <th>Hazırlama Süresi</th>
+        <td>@Model.HazirlamaSuresi</td>
+    </tr>
+
+    <tr>
+        <th>Pişirme Süresi</th>
+        <td>@Model.PismeSuresi</td>
+    </tr>
+
+    <tr>
+        <th>Kişi Sayısı</th>
+        <td>@Model.KisiSayisi</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.YemekId" />
+
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a href="/AdminYemek/Index" class="btn btn-secondary">Vazgeç</a>
+</form>

@@ -1,0 +1,32 @@
+﻿@model YemekSitesiDbFirst.Models.Kategoriler
+
+@{
+    ViewData["Title"] = "Kategori Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Kategori Güncelle</h1>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="KategoriId" />
+
+    <div class="mb-3">
+        <label class="form-label">Kategori Adı</label>
+        <input asp-for="KategoriAd" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Açıklama</label>
+        <textarea asp-for="Aciklama" class="form-control" rows="4"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-warning">
+        Güncelle
+    </button>
+
+    <a href="/AdminKategori/Index" class="btn btn-secondary">
+        Geri Dön
+    </a>
+
+</form>

@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Yönetim Paneli";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Yönetim Paneli</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+
+<div class="row">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">Kategoriler</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/AdminKategori/Index">Detayları Gör</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">Yemekler</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/AdminYemek/Index">Detayları Gör</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">Mesajlar</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/AdminMesaj/Index">Detayları Gör</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">Yorumlar</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/AdminYorum/Index">Detayları Gör</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-info text-white mb-4">
+            <div class="card-body">Raporlama</div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" href="/AdminRapor/Index">Raporları Gör</a>
+                <div class="small text-white"><i class="fas fa-chart-bar"></i></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-info-circle me-1"></i>
+        Panel Bilgilendirme
+    </div>
+
+    <div class="card-body">
+        <p>
+            Bu panel üzerinden yemek sitesi içeriklerini yönetebilirsin.
+            Kategori, yemek, mesaj, yorum ve raporlama işlemleri sol menüden yapılacaktır.
+        </p>
+
+        <p>
+            Admin panelde <strong>kategori ekleme/güncelleme/silme</strong>,
+            <strong>yemek yönetimi</strong>, <strong>mesaj takibi</strong>,
+            <strong>yorum onaylama</strong> ve <strong>raporlama</strong> ekranları bulunmaktadır.
+        </p>
+    </div>
+</div>

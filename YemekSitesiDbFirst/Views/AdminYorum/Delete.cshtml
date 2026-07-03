@@ -1,0 +1,46 @@
+﻿@model YemekSitesiDbFirst.Models.Yorumlar
+
+@{
+    ViewData["Title"] = "Yorum Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Yorum Sil</h1>
+
+<div class="alert alert-danger">
+    Bu yorumu silmek istediğine emin misin?
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ad Soyad</th>
+        <td>@Model.AdSoyad</td>
+    </tr>
+
+    <tr>
+        <th>Mail</th>
+        <td>@Model.Mail</td>
+    </tr>
+
+    <tr>
+        <th>Yemek</th>
+        <td>@Model.Yemek?.YemekAd</td>
+    </tr>
+
+    <tr>
+        <th>Yorum</th>
+        <td>@Model.YorumIcerik</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.YorumId" />
+
+    <button type="submit" class="btn btn-danger">
+        Sil
+    </button>
+
+    <a href="/AdminYorum/Index" class="btn btn-secondary">
+        Vazgeç
+    </a>
+</form>

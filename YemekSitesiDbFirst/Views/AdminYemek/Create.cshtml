@@ -1,0 +1,62 @@
+﻿@model YemekSitesiDbFirst.Models.Yemekler
+
+@{
+    ViewData["Title"] = "Yemek Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Yeni Yemek Ekle</h1>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Yemek Adı</label>
+        <input asp-for="YemekAd" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kategori</label>
+        <select asp-for="KategoriId" asp-items="ViewBag.KategoriId" class="form-control">
+            <option value="">Kategori Seçiniz</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Malzemeler</label>
+        <textarea asp-for="Malzemeler" class="form-control" rows="4"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tarif</label>
+        <textarea asp-for="Tarif" class="form-control" rows="5"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Resim URL</label>
+        <input asp-for="ResimUrl" class="form-control" placeholder="/img/menu/1.jpg" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Hazırlama Süresi</label>
+        <input asp-for="HazirlamaSuresi" class="form-control" placeholder="10 dk" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Pişirme Süresi</label>
+        <input asp-for="PismeSuresi" class="form-control" placeholder="25 dk" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kişi Sayısı</label>
+        <input asp-for="KisiSayisi" class="form-control" placeholder="4 kişilik" />
+    </div>
+
+    <div class="mb-3 form-check">
+        <input asp-for="Durum" class="form-check-input" />
+        <label class="form-check-label">Aktif mi?</label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a href="/AdminYemek/Index" class="btn btn-secondary">Geri Dön</a>
+
+</form>

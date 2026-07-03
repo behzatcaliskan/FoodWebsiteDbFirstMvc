@@ -1,0 +1,41 @@
+﻿@model YemekSitesiDbFirst.Models.Kategoriler
+
+@{
+    ViewData["Title"] = "Kategori Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Kategori Sil</h1>
+
+<div class="alert alert-danger">
+    Bu kategoriyi silmek istediğine emin misin?
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori Id</th>
+        <td>@Model.KategoriId</td>
+    </tr>
+
+    <tr>
+        <th>Kategori Adı</th>
+        <td>@Model.KategoriAd</td>
+    </tr>
+
+    <tr>
+        <th>Açıklama</th>
+        <td>@Model.Aciklama</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.KategoriId" />
+
+    <button type="submit" class="btn btn-danger">
+        Sil
+    </button>
+
+    <a href="/AdminKategori/Index" class="btn btn-secondary">
+        Vazgeç
+    </a>
+</form>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<YemekSitesiDbFirst.Models.Yemekler>
+
+@{
+    ViewData["Title"] = "Yemekler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Yemekler</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Yemek Listesi</li>
+</ol>
+
+<div class="mb-3">
+    <a href="/AdminYemek/Create" class="btn btn-primary">
+        Yeni Yemek Ekle
+    </a>
+
+    <a href="/AdminYemek/ExportToPdf" class="btn btn-danger">
+        PDF Olarak İndir
+    </a>
+
+    <a href="/AdminYemek/ExportToExcel" class="btn btn-success">
+        Excel Olarak İndir
+    </a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Yemek Adı</th>
+            <th>Kategori</th>
+            <th>Hazırlama</th>
+            <th>Pişirme</th>
+            <th>Kişi Sayısı</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.YemekId</td>
+                <td>@item.YemekAd</td>
+                <td>@item.Kategori?.KategoriAd</td>
+                <td>@item.HazirlamaSuresi</td>
+                <td>@item.PismeSuresi</td>
+                <td>@item.KisiSayisi</td>
+                <td>
+                    @if (item.Durum == true)
+                    {
+                        <span class="badge bg-success">Aktif</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Pasif</span>
+                    }
+                </td>
+                <td>
+                    <a href="/AdminYemek/Edit/@item.YemekId" class="btn btn-warning btn-sm">
+                        Güncelle
+                    </a>
+
+                    <a href="/AdminYemek/Delete/@item.YemekId" class="btn btn-danger btn-sm">
+                        Sil
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

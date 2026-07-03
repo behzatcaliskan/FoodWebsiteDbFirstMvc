@@ -1,0 +1,1256 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Lezzet Sofrası">
+    <meta name="description" content="Lezzet Sofrası - Yemek ve Tarif Sitesi">
+    <title>Lezzet Sofrası - Yemek ve Tarif Sitesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+    <!-- Bootstrap 5.3 -->
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />
+    <!-- AOS Animate on Scroll -->
+    <link href="@Url.Content("~/css/aos.css")" rel="stylesheet" />
+    <!-- Swiper -->
+    <link href="@Url.Content("~/css/swiper-bundle.min.css")" rel="stylesheet" />
+    <!-- all min css -->
+    <link rel="stylesheet" href="@Url.Content("~/css/all.min.css")" />
+    <!-- magnific CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/css/magnific-popup.css")" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/css/style.css")" />
+
+    <style>
+        .admin-btn {
+            background: #222 !important;
+            color: #fff !important;
+            border-radius: 30px;
+            padding: 10px 18px !important;
+            margin-left: 6px;
+        }
+
+            .admin-btn:hover {
+                background: var(--primary) !important;
+                color: #fff !important;
+            }
+    </style>
+
+</head>
+<body>
+    <!-- ============================================================
+       TOP BAR
+       ============================================================ -->
+    <div id="topbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div class="top-contact d-flex flex-wrap">
+                    <span><i class="fas fa-phone-alt"></i>+90 212 000 00 00</span>
+                    <span><i class="fas fa-envelope"></i>info@lezzetsofrasi.com</span>
+                    <span><i class="fas fa-map-marker-alt"></i>İstanbul, Türkiye</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span class="ttag"><i class="fas fa-fire me-1"></i>Bugüne Özel Ücretsiz Teslimat!</span>
+                    <div class="tsoc">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+    <nav class="navbar navbar-expand-lg" id="nav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="blogo">
+                    <div class="bico"><i class="fas fa-utensils"></i></div>
+                    <div>
+                        <div class="bname">Lezzet <span>Sofrası</span></div>
+                        <div class="bsub">Yemek & Tarif Sitesi</div>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <i class="fas fa-bars" style="color:var(--primary);font-size:1.35rem;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Hakkımızda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Yemekler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chefs">Şefler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservation">Rezervasyon</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Yorumlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact-section">İletişim</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-1">
+                    <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
+
+                    <a href="#menu" class="nav-link nav-cta">
+                        <i class="fas fa-utensils me-1"></i>Menüyü Gör
+                    </a>
+
+                    <a href="/Admin/Login" class="nav-link nav-cta admin-btn">
+                        <i class="fas fa-user-shield me-1"></i>Yönetim Paneli
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- ============================================================
+       FIX 1 � SEARCH OVERLAY POPUP
+       ============================================================ -->
+    <div id="searchOv">
+        <button class="sovclose" id="searchClose"><i class="fas fa-times"></i></button>
+        <div class="sovbox">
+            <h4>Bugün canın ne yemek istiyor?</h4>
+            <div class="sovinput">
+                <input type="text" id="searchInput" placeholder="Yemek, tarif veya kategori ara..." autocomplete="off" />
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <!-- Categories inside search box -->
+            <div class="sovcats">
+                <div class="sovcat active" data-cat="all">
+                    <img src="@Url.Content("~/img/menu/1.jpg")" alt="" />Tüm Yemekler
+                </div>
+                <div class="sovcat" data-cat="burgers">
+                    <img src="@Url.Content("~/img/menu/1.jpg")" alt="" />Burgerler
+                </div>
+                <div class="sovcat" data-cat="pizza">
+                    <img src="@Url.Content("~/img/menu/2.jpg")" alt="" />Pizza
+                </div>
+                <div class="sovcat" data-cat="chicken">
+                    <img src="@Url.Content("~/img/menu/3.jpg")" alt="" />Tavuk
+                </div>
+                <div class="sovcat" data-cat="wraps">
+                    <img src="@Url.Content("~/img/menu/4.jpg")" alt="" />Dürümler
+                </div>
+                <div class="sovcat" data-cat="pasta">
+                    <img src="@Url.Content("~/img/menu/5.jpg")" alt="" />Makarna
+                </div>
+                <div class="sovcat" data-cat="desserts">
+                    <img src="@Url.Content("~/img/menu/6.jpg")" alt="" />Tatlılar
+                </div>
+            </div>
+            <div class="sovtrend">
+                <p><i class="fas fa-fire me-1" style="color:var(--secondary);"></i>Popüler Aramalar</p>
+                <span class="ttag">Ev Yapımı Burger</span>
+                <span class="ttag">Nashville Tavuk</span>
+                <span class="ttag">Özel Pizza</span>
+                <span class="ttag">Sufle</span>
+                <span class="ttag">Baharatlı Patates</span>
+                <span class="ttag">Meyveli İçecek</span>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================
+       HERO
+       ============================================================ -->
+    <section id="hero">
+        <div class="hs hs1"></div>
+        <div class="hs hs2"></div>
+        <div class="hbgtxt">LEZZET</div>
+        <div class="container">
+            <div class="row align-items-center g-5" style="min-height:88vh;">
+                <div class="col-lg-6">
+                    <div class="hbadge">
+                        <div class="hbi"><i class="fas fa-star"></i></div>
+                        <span>Lezzetli tarifler ve pratik yemekler burada</span>
+                    </div>
+                    <h1 class="htitle">Her Güne Uygun <span class="hl">Lezzetli Yemekler</span><br />ve Pratik Tarifler</h1>
+                    <p class="hdesc">Özenle seçilmiş malzemelerle hazırlanan tarifleri keşfet. Çorbalardan ana yemeklere, tatlılardan pratik tariflere kadar her lezzet burada.</p>
+                    <div class="d-flex flex-wrap gap-3 mb-2">
+                        <a href="#menu" class="btn-red"><i class="fas fa-utensils"></i>Yemekleri Keşfet</a>
+                        <!-- FIX 2: Magnific popup video trigger -->
+                        <a href="#about" class="btn-play">
+                            <div class="pico"><i class="fas fa-info"></i></div>
+                            <span>Hikayemizi Gör</span>
+                        </a>
+                    </div>
+                    <div class="hstats d-flex gap-3 flex-wrap mt-4">
+                        <div class="hstat"><span class="snum">850<em>+</em></span><small>Mutlu Ziyaretçi</small></div>
+                        <div class="sdiv"></div>
+                        <div class="hstat"><span class="snum">120<em>+</em></span><small>Yemek Tarifi</small></div>
+                        <div class="sdiv"></div>
+                        <div class="hstat"><span class="snum">15<em>+</em></span><small>Özel Tarif</small></div>
+                        <div class="sdiv"></div>
+                        <div class="hstat"><span class="snum">12<em>+</em></span><small>Yıllık Deneyim</small></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div style="position:relative;text-align:center;">
+                        <div class="hcircle">
+                            <img src="@Url.Content("~/img/banner-img.jpg")" alt="Burger" />
+                        </div>
+                        <div class="fcard fc1">
+                            <div class="fcoi r"><i class="fas fa-fire"></i></div>
+                            <div><span class="fcnum">Günün Önerisi</span><span class="fcsm">Bugüne özel</span></div>
+                        </div>
+                        <div class="fcard fc2">
+                            <div class="fcoi y"><i class="fas fa-star"></i></div>
+                            <div><span class="fcnum">4.9/5</span><span class="fcsm">yorumlar</span></div>
+                        </div>
+                        <div class="fcard fc3">
+                            <div class="fcoi g"><i class="fas fa-clock"></i></div>
+                            <div><span class="fcnum">20 min</span><span class="fcsm">pratik tarif</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- MARQUEE -->
+    <div class="mqsec">
+        <div class="mqtrack">
+            <div class="mqitem"><i class="fas fa-circle"></i>Çıtır Tavuk</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Gurme Burgerler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>El Yapımı Pizza</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Taze Dürümler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Baharatlı Patates</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Soğuk İçecekler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Izgara Sandviçler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Çıtır Tavuk</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Gurme Burgerler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>El Yapımı Pizza</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Taze Dürümler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Baharatlı Patates</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Soğuk İçecekler</div>
+            <div class="mqitem"><i class="fas fa-circle"></i>Izgara Sandviçler</div>
+        </div>
+    </div>
+    <!-- CATEGORY -->
+    <section id="category">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Neler Var?</span>
+                <h2 class="stitle"><span>Kategorilere</span> Göz At</h2>
+                <div class="sline"></div>
+                <p class="sdesc mx-auto" style="max-width:480px;">Çorbalardan ana yemeklere, tatlılardan pratik tariflere kadar aradığın lezzeti kolayca bul.</p>
+            </div>
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="0">
+                    <div class="catcard active" data-filter="all">
+                        <img class="catimg" src="@Url.Content("~/img/category/1.jpg")" alt="" />
+                        <div class="catnm">Tüm Yemekler</div>
+                        <div class="catct">99 tarif</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="70">
+                    <div class="catcard" data-filter="burgers">
+                        <img class="catimg" src="@Url.Content("~/img/category/2.jpg")" alt="" />
+                        <div class="catnm">Burgerler</div>
+                        <div class="catct">24 tarif</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="140">
+                    <div class="catcard" data-filter="pizza">
+                        <img class="catimg" src="@Url.Content("~/img/category/3.jpg")" alt="" />
+                        <div class="catnm">Pizza</div>
+                        <div class="catct">18 tarif</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="210">
+                    <div class="catcard" data-filter="chicken">
+                        <img class="catimg" src="@Url.Content("~/img/category/4.jpg")" alt="" />
+                        <div class="catnm">Fried Tavuk</div>
+                        <div class="catct">15 tarif</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="280">
+                    <div class="catcard" data-filter="wraps">
+                        <img class="catimg" src="@Url.Content("~/img/category/5.jpg")" alt="" />
+                        <div class="catnm">Dürümler</div>
+                        <div class="catct">12 tarif</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="catcard" data-filter="desserts">
+                        <img class="catimg" src="@Url.Content("~/img/category/6.jpg")" alt="" />
+                        <div class="catnm">Tatlılar</div>
+                        <div class="catct">20 tarif</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="astack">
+                        <div class="aexp"><span class="anum">12+</span><small>Yıllık<br />Deneyim</small></div>
+                        <div class="amain"><img src="@Url.Content("~/img/about1.jpg")" alt="Restaurant" /></div>
+                        <div class="asm"><img src="@Url.Content("~/img/about2.jpg")" alt="" /></div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <span class="slbl">Hikayemiz</span>
+                    <h2 class="stitle text-start">Lezzetli Tariflerle<br /><span>Mutfağımıza</span> Davetlisin</h2>
+                    <div class="sline lft"></div>
+                    <p class="sdesc mb-4">Lezzet Sofrası, evde kolayca hazırlanabilecek tarifleri bir araya getirmek için kuruldu. Amacımız pratik, anlaşılır ve lezzetli yemekleri herkes için ulaşılabilir hale getirmek.</p>
+                    <div class="mb-4">
+                        <div class="fti">
+                            <div class="ftico r"><i class="fas fa-leaf"></i></div>
+                            <div>
+                                <h6>%100 Taze Malzemeler</h6>
+                                <p>Tariflerimizde taze ve kolay bulunabilir malzemeler kullanmaya özen gösteriyoruz.</p>
+                            </div>
+                        </div>
+                        <div class="fti">
+                            <div class="ftico y"><i class="fas fa-award"></i></div>
+                            <div>
+                                <h6>Özenle Hazırlanmış Tarifler</h6>
+                                <p>Her tarif; malzeme, süre ve yapım aşamalarıyla sade şekilde hazırlanır.</p>
+                            </div>
+                        </div>
+                        <div class="fti">
+                            <div class="ftico g"><i class="fas fa-shipping-fast"></i></div>
+                            <div>
+                                <h6>Pratik Hazırlık</h6>
+                                <p>Yoğun günlerde bile kısa sürede hazırlayabileceğin yemek fikirleri sunuyoruz.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#menu" class="btn-red"><i class="fas fa-book-open"></i>Tüm Yemekleri Gör</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================================================
+       MENU � FIX 3 (filter works) + FIX 4 (plus opens popup)
+       ============================================================ -->
+    <section id="menu">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Bugün Ne Pişiyor?</span>
+                <h2 class="stitle">Lezzetlerimiz <span>Yemekler</span></h2>
+                <div class="sline"></div>
+            </div>
+            <!-- FIX 3 � filter buttons -->
+            <div class="text-center mb-4" data-aos="fade-up">
+                <button class="filtbtn active" data-f="all">Tümü</button>
+                <button class="filtbtn" data-f="burgers">Burgerler</button>
+                <button class="filtbtn" data-f="pizza">Pizza</button>
+                <button class="filtbtn" data-f="chicken">Tavuk</button>
+                <button class="filtbtn" data-f="wraps">Dürümler</button>
+                <button class="filtbtn" data-f="desserts">Tatlılar</button>
+                <button class="filtbtn" data-f="pasta">Makarna</button>
+            </div>
+            <div class="row g-4" id="mgrid">
+                <!-- CARD 1: Burgerler -->
+                <div class="col-sm-6 col-lg-4 mwrap" data-c="burgers" data-aos="fade-up">
+                    <div class="mcard"
+                         data-img="@Url.Content("~/img/menu/1.jpg")"
+                         data-title="Classic Ev Yapımı Burger"
+                         data-cat="Burgerler"
+                         data-price="$14.99" data-old="$18.99"
+                         data-rating="4.9" data-reviews="128"
+                         data-cal="620" data-time="12"
+                         data-desc="Ev yapımı burger köftesi, cheddar peyniri, karamelize soğan, turşu ve özel sosla hazırlanır. Pratik ve doyurucu bir tarif."
+                         data-tags="Baharatlı,Çok Satan,Et">
+                        <div class="mimg">
+                            <img src="@Url.Content("~/img/menu/1.jpg")" alt="Ev Yapımı Burger" />
+                            <div class="mbdg hot"><i class="fas fa-star"></i> Popüler</div>
+                            <div class="mhrt"><i class="far fa-heart"></i></div>
+                        </div>
+                        <div class="mbody">
+                            <div class="mcat">Burgerler</div>
+                            <div class="mtit">Classic Ev Yapımı Burger</div>
+                            <div class="mdesc">Ev yapımı köfte, cheddar peyniri, karamelize soğan, turşu ve özel sos</div>
+                            <div class="mfoot">
+                                <div>
+                                    <div class="mprice">$14.99 <small>$18.99</small></div>
+                                    <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(128)</span></div>
+                                </div>
+                                <button class="madd" title="Detayları Gör"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD 2: Pizza -->
+                <div class="col-sm-6 col-lg-4 mwrap" data-c="pizza" data-aos="fade-up" data-aos-delay="80">
+                    <div class="mcard"
+                         data-img="@Url.Content("~/img/menu/2.jpg")"
+                         data-title="Ev Usulü Margherita Pizza"
+                         data-cat="Pizza"
+                         data-price="$19.99" data-old="$24.99"
+                         data-rating="4.8" data-reviews="95"
+                         data-cal="480" data-time="18"
+                         data-desc="San Marzano tomatoes, fresh buffalo mozzarella, fragrant basil leaves, drizzled with İtalyan truffle oil on a hand-stretched sourdough base."
+                         data-tags="Vejetaryen,Yeni,İtalyan">
+                        <div class="mimg">
+                            <img src="@Url.Content("~/img/menu/2.jpg")" alt="Pizza" />
+                            <div class="mbdg new"><i class="fas fa-star"></i> Yeni</div>
+                            <div class="mhrt"><i class="far fa-heart"></i></div>
+                        </div>
+                        <div class="mbody">
+                            <div class="mcat">Pizza</div>
+                            <div class="mtit">Ev Usulü Margherita Pizza</div>
+                            <div class="mdesc">Domates sosu, mozzarella, fesleğen ve özel hamur</div>
+                            <div class="mfoot">
+                                <div>
+                                    <div class="mprice">$19.99 <small>$24.99</small></div>
+                                    <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(95)</span></div>
+                                </div>
+                                <button class="madd" title="Detayları Gör"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD 3: Tavuk -->
+                <div class="col-sm-6 col-lg-4 mwrap" data-c="chicken" data-aos="fade-up" data-aos-delay="160">
+                    <div class="mcard"
+                         data-img="@Url.Content("~/img/menu/3.jpg")"
+                         data-title="Nashville Popüler Tavuk"
+                         data-cat="Tavuk"
+                         data-price="$12.99" data-old="$16.99"
+                         data-rating="5.0" data-reviews="210"
+                         data-cal="710" data-time="15"
+                         data-desc="Özel baharatlarla marine edilen çıtır tavuk, lezzetli soslarla servis edilir."
+                         data-tags="Baharatlı,Çok Satan,Çıtır">
+                        <div class="mimg">
+                            <img src="@Url.Content("~/img/menu/3.jpg")" alt="Tavuk" />
+                            <div class="mbdg"><i class="fas fa-star"></i> Çok Sevilen</div>
+                            <div class="mhrt"><i class="far fa-heart"></i></div>
+                        </div>
+                        <div class="mbody">
+                            <div class="mcat">Tavuk</div>
+                            <div class="mtit">Nashville Popüler Tavuk</div>
+                            <div class="mdesc">Baharatlı çıtır tavuk, özel sos ve bal dokunuşu</div>
+                            <div class="mfoot">
+                                <div>
+                                    <div class="mprice">$12.99 <small>$16.99</small></div>
+                                    <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(210)</span></div>
+                                </div>
+                                <button class="madd" title="Detayları Gör"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD 4: Dürümler -->
+                <div class="col-sm-6 col-lg-4 mwrap" data-c="wraps" data-aos="fade-up">
+                    <div class="mcard"
+                         data-img="@Url.Content("~/img/menu/4.jpg")"
+                         data-title="Tavuklu Fajita Dürüm"
+                         data-cat="Dürümler"
+                         data-price="$10.99" data-old=""
+                         data-rating="4.5" data-reviews="74"
+                         data-cal="520" data-time="10"
+                         data-desc="Izgara chicken strips, saut�ed bell peppers and onions, sour cream, fresh guacamole and salsa wrapped in a warm flour tortilla with melted cheddar."
+                         data-tags="Izgara,Taze,Meksika">
+                        <div class="mimg">
+                            <img src="@Url.Content("~/img/menu/4.jpg")" alt="Wrap" />
+                            <div class="mhrt"><i class="far fa-heart"></i></div>
+                        </div>
+                        <div class="mbody">
+                            <div class="mcat">Dürümler</div>
+                            <div class="mtit">Tavuklu Fajita Dürüm</div>
+                            <div class="mdesc">Izgara tavuk, biber, özel sos ve sıcak tortilla</div>
+                            <div class="mfoot">
+                                <div>
+                                    <div class="mprice">$10.99</div>
+                                    <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(74)</span></div>
+                                </div>
+                                <button class="madd" title="Detayları Gör"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD 5: Tatlılar -->
+                <div class="col-sm-6 col-lg-4 mwrap" data-c="desserts" data-aos="fade-up" data-aos-delay="80">
+                    <div class="mcard"
+                         data-img="@Url.Content("~/img/menu/5.jpg")"
+                         data-title="Nutella Sufle"
+                         data-cat="Tatlılar"
+                         data-price="$8.99" data-old="$11.99"
+                         data-rating="4.9" data-reviews="56"
+                         data-cal="390" data-time="8"
+                         data-desc="İçi akışkan çikolatalı sufle, tatlı krizleri için pratik ve lezzetli bir seçenektir."
+                         data-tags="Tatlı,Yeni,Çikolatalı">
+                        <div class="mimg">
+                            <img src="@Url.Content("~/img/menu/5.jpg")" alt="Sufle" />
+                            <div class="mbdg new"><i class="fas fa-star"></i> Yeni</div>
+                            <div class="mhrt"><i class="far fa-heart"></i></div>
+                        </div>
+                        <div class="mbody">
+                            <div class="mcat">Tatlılar</div>
+                            <div class="mtit">Nutella Sufle</div>
+                            <div class="mdesc">Akışkan çikolatalı sufle, vanilyalı dondurma ve karamel</div>
+                            <div class="mfoot">
+                                <div>
+                                    <div class="mprice">$8.99 <small>$11.99</small></div>
+                                    <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(56)</span></div>
+                                </div>
+                                <button class="madd" title="Detayları Gör"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD 6: Makarna -->
+                <div class="col-sm-6 col-lg-4 mwrap" data-c="pasta" data-aos="fade-up" data-aos-delay="160">
+                    <div class="mcard"
+                         data-img="@Url.Content("~/img/menu/6.jpg")"
+                         data-title="Truffle Mushroom Makarna"
+                         data-cat="Makarna"
+                         data-price="$16.99" data-old=""
+                         data-rating="4.9" data-reviews="88"
+                         data-cal="560" data-time="20"
+                         data-desc="Mantar, krema ve parmesanla hazırlanan lezzetli ve pratik makarna tarifi."
+                         data-tags="Vejetaryen,Şefin Seçimi,İtalyan">
+                        <div class="mimg">
+                            <img src="@Url.Content("~/img/menu/6.jpg")" alt="Makarna" />
+                            <div class="mbdg hot">Şefin Seçimi</div>
+                            <div class="mhrt"><i class="far fa-heart"></i></div>
+                        </div>
+                        <div class="mbody">
+                            <div class="mcat">Makarna</div>
+                            <div class="mtit">Truffle Mushroom Makarna</div>
+                            <div class="mdesc">Mantar, parmesan ve özel sosla hazırlanan makarna</div>
+                            <div class="mfoot">
+                                <div>
+                                    <div class="mprice">$16.99</div>
+                                    <div class="mstars"><i class="fas fa-star"></i> <span style="color:#bbb;font-size:.7rem;">(88)</span></div>
+                                </div>
+                                <button class="madd" title="Detayları Gör"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end #mgrid -->
+            <div class="text-center mt-5"><a href="#" class="btn-red"><i class="fas fa-th-large"></i>Tüm Yemekleri Gör</a></div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+       FIX 4 � MENU DETAIL POPUP MODAL
+       ============================================================ -->
+    <div id="menuPop">
+        <div class="mpbox">
+            <button class="mpclose" id="mpClose"><i class="fas fa-times"></i></button>
+            <div class="mpimg"><img id="mpImg" src="" alt="" /></div>
+            <div class="mpbody">
+                <div id="mpCat"></div>
+                <div id="mpTitle"></div>
+                <div id="mpStars"></div>
+                <div id="mpDesc"></div>
+                <div id="mpPrice"></div>
+                <div class="mpmeta" id="mpMeta"></div>
+                <div class="mpqty">
+                    <button class="mpqbtn" id="mpMinus">-</button>
+                    <span class="mpqnum" id="mpQnum">1</span>
+                    <button class="mpqbtn" id="mpPlus">+</button>
+                    <span style="font-size:.82rem;color:#aaa;margin-left:9px;">porsiyon</span>
+                </div>
+                <div class="mptags" id="mpTags"></div>
+                <button class="mpaddcart" id="mpAddCart"><i class="fas fa-shopping-cart"></i>Listeye Ekle</button>
+            </div>
+        </div>
+    </div>
+    <!-- SPECIAL OFFER -->
+    <section id="special">
+        <div class="spbg"></div>
+        <div class="container" style="position:relative;z-index:2;">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="sptag"><i class="fas fa-bolt me-1"></i>Günün Öne Çıkan Tarifi</div>
+                    <h2 class="sptitle">Bugünün Özel<br />Tarifi:<br /><span>Ev Burgeri</span></h2>
+                    <p class="spdesc">Evde kolayca hazırlayabileceğin, doyurucu ve lezzetli özel tarifimizi mutlaka dene.</p>
+                    <div class="cdwrap">
+                        <div class="cditem"><span class="cdnum" id="cdH">08</span><span class="cdlbl">Saat</span></div>
+                        <div class="cditem"><span class="cdnum" id="cdM">45</span><span class="cdlbl">Dakika</span></div>
+                        <div class="cditem"><span class="cdnum" id="cdS">30</span><span class="cdlbl">Saniye</span></div>
+                    </div>
+                    <a href="#menu" class="btn-red"><i class="fas fa-shopping-cart"></i>Tarife Git</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="spimgw">
+                        <div class="spglow"></div>
+                        <div class="sppbdg"><span class="old">$24.99</span><span class="np">$17.49</span></div>
+                        <img src="@Url.Content("~/img/off-img.jpg")" alt="Özel Burger" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+       GALLERY � FIX 7 (click opens detail popup)
+       ============================================================ -->
+    <section id="gallery">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Galeri</span>
+                <h2 class="stitle"><span>Yemek</span> Galerimiz</h2>
+                <div class="sline"></div>
+            </div>
+            <div class="ggrid" data-aos="fade-up">
+                <div class="gitem"
+                     data-gi="0"
+                     data-gimg="@Url.Content("~/img/portfolio/work1.jpg")"
+                     data-gtitle="Gurme Burgerler"
+                     data-gdesc="Özenle hazırlanan burgerlerimiz; ev yapımı köfte, cheddar peyniri ve özel soslarla servis edilir.">
+                    <img src="@Url.Content("~/img/portfolio/work1.jpg")" alt="Burgerler" />
+                    <div class="gover"><span><i class="fas fa-expand-alt"></i> Gurme Burgerler</span></div>
+                </div>
+                <div class="gitem"
+                     data-gi="1"
+                     data-gimg="@Url.Content("~/img/portfolio/work2.jpg")"
+                     data-gtitle="Fırın Pizza"
+                     data-gdesc="İnce hamur, özel domates sosu ve bol malzemeyle hazırlanan fırın pizzalarımız.">
+                    <img src="@Url.Content("~/img/portfolio/work2.jpg")" alt="Pizza" />
+                    <div class="gover"><span><i class="fas fa-expand-alt"></i> Fırın Pizza</span></div>
+                </div>
+                <div class="gitem"
+                     data-gi="2"
+                     data-gimg="@Url.Content("~/img/portfolio/work3.jpg")"
+                     data-gtitle="Çıtır Tavuk"
+                     data-gdesc="Özel baharat karışımıyla hazırlanan dışı çıtır içi yumuşak tavuk lezzetleri.">
+                    <img src="@Url.Content("~/img/portfolio/work3.jpg")" alt="Tavuk" />
+                    <div class="gover"><span><i class="fas fa-expand-alt"></i> Çıtır Tavuk</span></div>
+                </div>
+                <div class="gitem"
+                     data-gi="3"
+                     data-gimg="@Url.Content("~/img/portfolio/work4.jpg")"
+                     data-gtitle="Tatlı Tatlılar"
+                     data-gdesc="Sufle, pasta ve mevsimlik tatlılardan oluşan tatlı seçeneklerimiz.">
+                    <img src="@Url.Content("~/img/portfolio/work4.jpg")" alt="Tatlılar" />
+                    <div class="gover"><span><i class="fas fa-expand-alt"></i> Tatlı Tatlılar</span></div>
+                </div>
+                <div class="gitem"
+                     data-gi="4"
+                     data-gimg="@Url.Content("~/img/portfolio/work5.jpg")"
+                     data-gtitle="Taze Dürümler"
+                     data-gdesc="Izgara lezzetler, taze sebzeler ve özel soslarla hazırlanan doyurucu dürümler.">
+                    <img src="@Url.Content("~/img/portfolio/work5.jpg")" alt="Dürümler" />
+                    <div class="gover"><span><i class="fas fa-expand-alt"></i> Taze Dürümler</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FIX 7 � GALLERY POPUP -->
+    <div id="galPop">
+        <div class="gpbox">
+            <button class="gpclose" id="gpClose"><i class="fas fa-times"></i></button>
+            <img id="gpImg" src="" alt="" />
+            <div class="gpcap">
+                <h5 id="gpTitle"></h5>
+                <p id="gpDesc"></p>
+            </div>
+            <div class="gpnav">
+                <button id="gpÖnceki"><i class="fas fa-chevron-left me-1"></i>Önceki</button>
+                <button id="gpSonraki">Sonraki <i class="fas fa-chevron-right ms-1"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================
+       HISTORY � FIX 8 (alternating left/right text)
+       ============================================================ -->
+    <section id="history">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Yolculuğumuz</span>
+                <h2 class="stitle"><span>Lezzet</span> Yolculuğumuz</h2>
+                <div class="sline"></div>
+                <p class="sdesc mx-auto" style="max-width:480px;">Her tarif; mutfakta geçirilen emeğin, paylaşmanın ve lezzetin bir parçası.</p>
+            </div>
+            <div class="timeline" data-aos="fade-up">
+                <!-- ODD ? text on LEFT -->
+                <div class="tli">
+                    <div class="tl-left">
+                        <div class="tlyear">2012</div>
+                        <h5>Lezzet Sofrası’nın Başlangıcı</h5>
+                        <p>Lezzet Sofrası, pratik ve anlaşılır tarifleri paylaşma fikriyle yola çıktı. Kısa sürede evde yemek yapmayı sevenlerin uğrak noktası haline geldi.</p>
+                    </div>
+                    <div class="tl-center">
+                        <div class="tldot"></div>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tlyear">2012</div>
+                        <h5>Lezzet Sofrası’nın Başlangıcı</h5>
+                        <p>Lezzet Sofrası, pratik ve anlaşılır tarifleri paylaşma fikriyle yola çıktı. Kısa sürede evde yemek yapmayı sevenlerin uğrak noktası haline geldi.</p>
+                    </div>
+                </div>
+                <!-- EVEN ? text on RIGHT -->
+                <div class="tli">
+                    <div class="tl-left">
+                        <div class="tlyear">2015</div>
+                        <h5>Tarif Arşivinin Gelişmesi</h5>
+                        <p>Tarif çeşitliliği artırıldı; çorba, ana yemek, tatlı ve pratik atıştırmalıklar ayrı kategoriler halinde sunulmaya başladı.</p>
+                    </div>
+                    <div class="tl-center">
+                        <div class="tldot"></div>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tlyear">2015</div>
+                        <h5>Tarif Arşivinin Gelişmesi</h5>
+                        <p>Tarif çeşitliliği artırıldı; çorba, ana yemek, tatlı ve pratik atıştırmalıklar ayrı kategoriler halinde sunulmaya başladı.</p>
+                    </div>
+                </div>
+                <!-- ODD ? text on LEFT -->
+                <div class="tli">
+                    <div class="tl-left">
+                        <div class="tlyear">2019</div>
+                        <h5>Pratik Yemek Dönemi</h5>
+                        <p>Hızlı hazırlanabilen ama lezzetten ödün vermeyen tarifler ön plana çıkarıldı. Kullanıcılar için daha sade tarif anlatımları hazırlandı.</p>
+                    </div>
+                    <div class="tl-center">
+                        <div class="tldot"></div>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tlyear">2019</div>
+                        <h5>Pratik Yemek Dönemi</h5>
+                        <p>Hızlı hazırlanabilen ama lezzetten ödün vermeyen tarifler ön plana çıkarıldı. Kullanıcılar için daha sade tarif anlatımları hazırlandı.</p>
+                    </div>
+                </div>
+                <!-- EVEN ? text on RIGHT -->
+                <div class="tli">
+                    <div class="tl-left">
+                        <div class="tlyear">2026</div>
+                        <h5>Dijital Yemek Platformu</h5>
+                        <p>Bugün Lezzet Sofrası, farklı damak zevklerine hitap eden tarifleriyle büyümeye devam eden modern bir yemek platformudur.</p>
+                    </div>
+                    <div class="tl-center">
+                        <div class="tldot"></div>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tlyear">2026</div>
+                        <h5>Dijital Yemek Platformu</h5>
+                        <p>Bugün Lezzet Sofrası, farklı damak zevklerine hitap eden tarifleriyle büyümeye devam eden modern bir yemek platformudur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CHEFS -->
+    <section id="chefs">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Mutfak Ekibi</span>
+                <h2 class="stitle">Uzman <span>Şeflerimiz</span></h2>
+                <div class="sline"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                    <div class="chcard">
+                        <div class="chimg">
+                            <img src="@Url.Content("~/img/chefs/1.jpg")" alt="" />
+                            <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                        </div>
+                        <div class="chbody">
+                            <div class="chnm">Alice Mortal</div>
+                            <div class="chrole">Baş Şef</div>
+                            <div class="chexp">12 yıl deneyim</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+                    <div class="chcard">
+                        <div class="chimg">
+                            <img src="@Url.Content("~/img/chefs/2.jpg")" alt="" />
+                            <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                        </div>
+                        <div class="chbody">
+                            <div class="chnm">Michael Corn</div>
+                            <div class="chrole">Izgara Ustası</div>
+                            <div class="chexp">8 yıl deneyim</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+                    <div class="chcard">
+                        <div class="chimg">
+                            <img src="@Url.Content("~/img/chefs/3.jpg")" alt="" />
+                            <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                        </div>
+                        <div class="chbody">
+                            <div class="chnm">Faz Chowdel</div>
+                            <div class="chrole">Tatlı Şefi</div>
+                            <div class="chexp">10 yıl deneyim</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+                    <div class="chcard">
+                        <div class="chimg">
+                            <img src="@Url.Content("~/img/chefs/4.jpg")" alt="" />
+                            <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                        </div>
+                        <div class="chbody">
+                            <div class="chnm">William Latnum</div>
+                            <div class="chrole">Pizza Ustası</div>
+                            <div class="chexp">9 yıl deneyim</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HOURS -->
+    <section id="hours">
+        <div class="hrsbg"></div>
+        <div class="container" style="position:relative;z-index:2;">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl" style="color:#a5d6bc;">Çalışma Saatleri</span>
+                <h2 class="stitle" style="color:#fff;">Her Zaman <span style="color:var(--secondary);">Senin İçin Açığız</span></h2>
+                <div class="sline"></div>
+            </div>
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="hrscard">
+                        <div class="hrsrow">
+                            <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Pazartesi - Salı</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="hdot off"></div>
+                                <span class="hrstime" style="color:#ff6b6b;">Kapalı</span>
+                            </div>
+                        </div>
+                        <div class="hrsrow">
+                            <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Çarşamba - Perşembe</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="hdot on"></div>
+                                <span class="hrstime">09:00 - 22:00</span>
+                            </div>
+                        </div>
+                        <div class="hrsrow">
+                            <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Cuma</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="hdot on"></div>
+                                <span class="hrstime">09:00 - 23:00</span>
+                            </div>
+                        </div>
+                        <div class="hrsrow">
+                            <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Cumartesi</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="hdot on"></div>
+                                <span class="hrstime">10:00 - 23:30</span>
+                            </div>
+                        </div>
+                        <div class="hrsrow">
+                            <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Pazar</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="hdot on"></div>
+                                <span class="hrstime">11:00 - 21:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3" data-aos="zoom-in">
+                    <div class="hrscta">
+                        <i class="fas fa-truck-fast fa-2x mb-3" style="color:rgba(255,255,255,.8);"></i>
+                        <h4>Online Menü</h4>
+                        <p>Lezzetleri hemen keşfet</p>
+                        <a href="#menu" class="btnw">Menüye Git</a>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="hrscard">
+                        <h5 style="color:#fff;margin-bottom:18px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;"><i class="fas fa-map-marker-alt me-2" style="color:var(--secondary);"></i>Bize Ulaş</h5>
+                        <div class="hrsrow"><span class="hrsday"><i class="fas fa-location-dot me-2" style="color:var(--secondary);"></i>Adres</span><span class="hrstime" style="font-size:.8rem;">İstanbul, Türkiye</span></div>
+                        <div class="hrsrow"><span class="hrsday"><i class="fas fa-phone me-2" style="color:var(--secondary);"></i>Telefon</span><span class="hrstime" style="font-size:.8rem;">+90 212 000 00 00</span></div>
+                        <div class="hrsrow"><span class="hrsday"><i class="fas fa-envelope me-2" style="color:var(--secondary);"></i>E-posta</span><span class="hrstime" style="font-size:.8rem;">info@lezzetsofrasi.com</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Ziyaretçiler Ne Diyor?</span>
+                <h2 class="stitle">Ziyaretçi <span>Yorumları</span></h2>
+                <div class="sline"></div>
+            </div>
+            <div class="swiper tesSwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tescard">
+                            <div class="tesq">"</div>
+                            <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="testxt">Tarifler çok anlaşılır ve uygulanabilir. Özellikle ev yapımı burger tarifi ailece favorimiz oldu.</p>
+                            <div class="tesauth">
+                                <img src="@Url.Content("~/img/testimonial/1.jpg")" alt="" />
+                                <div>
+                                    <div class="tesnm">Monica Wilber</div>
+                                    <div class="tesrl">Düzenli Ziyaretçi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tescard">
+                            <div class="tesq">"</div>
+                            <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="testxt">Pratik yemek fikirleri sayesinde hafta içi ne pişirsem derdim azaldı. Malzemeler de kolay bulunuyor.</p>
+                            <div class="tesauth">
+                                <img src="@Url.Content("~/img/testimonial/2.jpg")" alt="" />
+                                <div>
+                                    <div class="tesnm">Cameron Fox</div>
+                                    <div class="tesrl">Yemek Blog Yazarı</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tescard">
+                            <div class="tesq">"</div>
+                            <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="testxt">Makarna ve tatlı tariflerini denedim, sonuç gerçekten çok başarılıydı. Anlatımlar sade ve net.</p>
+                            <div class="tesauth">
+                                <img src="@Url.Content("~/img/testimonial/3.jpg")" alt="" />
+                                <div>
+                                    <div class="tesnm">Priya Sharma</div>
+                                    <div class="tesrl">Yemek Sever</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tescard">
+                            <div class="tesq">"</div>
+                            <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="testxt">Catered our office party of 50 people and everything was flawless. Taze, delicious, on time and well presented. Nashville chicken was the absolute star!</p>
+                            <div class="tesauth">
+                                <img src="@Url.Content("~/img/testimonial/4.jpg")" alt="" />
+                                <div>
+                                    <div class="tesnm">David Park</div>
+                                    <div class="tesrl">Kurumsal Müşteri</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-4" style="position:static;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION FORM -->
+    <section id="reservation">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Rezervasyon</span>
+                <h2 class="stitle"><span>Rezervasyon</span> Yap</h2>
+                <div class="sline"></div>
+                <p class="sdesc mx-auto" style="max-width:480px;">Keyifli bir yemek deneyimi için rezervasyon formunu doldurabilirsin.</p>
+            </div>
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div style="background:var(--dark);border-radius:18px;padding:36px;">
+                        <h4 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">İletişim Bilgileri</h4>
+                        <p style="color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:26px;">Soruların ve taleplerin için bizimle iletişime geçebilirsin.</p>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;"><i class="fas fa-clock"></i></div>
+                                <div><strong style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Çalışma Saatleri</strong><span style="color:#fff;font-size:.87rem;">Wed - Sun, 9 AM - 11 PM</span></div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;"><i class="fas fa-phone-alt"></i></div>
+                                <div><strong style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Rezervasyon İçin Ara</strong><span style="color:#fff;font-size:.87rem;">+90 212 000 00 00</span></div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;"><i class="fas fa-users"></i></div>
+                                <div><strong style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Grup Rezervasyonu</strong><span style="color:#fff;font-size:.87rem;">Kalabalık gruplar için özel menüler</span></div>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;"><i class="fas fa-map-marker-alt"></i></div>
+                                <div><strong style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Konum</strong><span style="color:#fff;font-size:.87rem;">İstanbul, Türkiye</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-left">
+                    <div class="fcard">
+                        <div class="row g-3">
+                            <div class="col-sm-6"><label class="flbl">Ad Soyad *</label><input type="text" class="fctrl" placeholder="John Doe" /></div>
+                            <div class="col-sm-6"><label class="flbl">Telefon Numarası *</label><input type="tel" class="fctrl" placeholder="+1 (800) 000-0000" /></div>
+                            <div class="col-sm-6"><label class="flbl">E-posta Adresi *</label><input type="email" class="fctrl" placeholder="you@email.com" /></div>
+                            <div class="col-sm-6">
+                                <label class="flbl">Kişi Sayısı *</label>
+                                <select class="fctrl">
+                                    <option>1 Kişi</option>
+                                    <option>2 Kişi</option>
+                                    <option>3 - 4 Kişi</option>
+                                    <option>5 - 6 Kişi</option>
+                                    <option>7 - 10 Kişi</option>
+                                    <option>10+ Kişi</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6"><label class="flbl">Tarih *</label><input type="date" class="fctrl" /></div>
+                            <div class="col-sm-6">
+                                <label class="flbl">Saat *</label>
+                                <select class="fctrl">
+                                    <option>09:00 AM</option>
+                                    <option>10:00 AM</option>
+                                    <option>11:00 AM</option>
+                                    <option>12:00 PM</option>
+                                    <option>01:00 PM</option>
+                                    <option>02:00 PM</option>
+                                    <option>06:00 PM</option>
+                                    <option>07:00 PM</option>
+                                    <option>08:00 PM</option>
+                                    <option>09:00 PM</option>
+                                    <option>10:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="col-12"><label class="flbl">Özel Notlar</label><textarea class="fctrl" rows="3" placeholder="Alerji, özel istek veya notlarını yazabilirsin..."></textarea></div>
+                            <div class="col-12"><button class="btn-red w-100 justify-content-center" id="resBtn"><i class="fas fa-calendar-check"></i>Rezervasyonu Onayla</button></div>
+                        </div>
+                        <div class="sucmsg" id="resOk">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Rezervasyon alındı! Kısa süre içinde dönüş yapılacaktır.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">Yenilikler</span>
+                <h2 class="stitle">Son <span>Blog</span> Yazıları</h2>
+                <div class="sline"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="blcard">
+                        <div class="blimg">
+                            <img src="@Url.Content("~/img/blog/1.jpg")" alt="" />
+                            <div class="bldatebdg"><span class="bd">14</span><span class="bm">Mar</span></div>
+                        </div>
+                        <div class="blbody">
+                            <div class="bltag">Yemek ve Sağlık</div>
+                            <div class="bltit"><a href="#">Sağlıklı ve Pratik Yemek Mümkün mü?</a></div>
+                            <div class="blmeta"><span><i class="fas fa-user"></i>Lezzet Editörü</span><span><i class="fas fa-comment"></i>24 Yorum</span></div>
+                            <a href="#" class="blmore">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+                    <div class="blcard">
+                        <div class="blimg">
+                            <img src="@Url.Content("~/img/blog/2.jpg")" alt="" />
+                            <div class="bldatebdg"><span class="bd">28</span><span class="bm">Feb</span></div>
+                        </div>
+                        <div class="blbody">
+                            <div class="bltag">Mutfak Bilgisi</div>
+                            <div class="bltit"><a href="#">Pratik Tarifleri Daha Dengeli Hale Getirme Yolları</a></div>
+                            <div class="blmeta"><span><i class="fas fa-user"></i>Mutfak Yazarı</span><span><i class="fas fa-comment"></i>18 Yorum</span></div>
+                            <a href="#" class="blmore">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+                    <div class="blcard">
+                        <div class="blimg">
+                            <img src="@Url.Content("~/img/blog/3.jpg")" alt="" />
+                            <div class="bldatebdg"><span class="bd">05</span><span class="bm">Jan</span></div>
+                        </div>
+                        <div class="blbody">
+                            <div class="bltag">Tarifler</div>
+                            <div class="bltit"><a href="#">Evde Deneyebileceğin Farklı Nohut Tarifleri</a></div>
+                            <div class="blmeta"><span><i class="fas fa-user"></i>Şef Berk</span><span><i class="fas fa-comment"></i>32 Yorum</span></div>
+                            <a href="#" class="blmore">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter">
+        <div class="nlbg"></div>
+        <div class="container">
+            <div class="nlw text-center" data-aos="zoom-in">
+                <span class="slbl" style="color:rgba(255,255,255,.7);">Bizi Takip Et</span>
+                <h2 class="mb-3" style="color:#fff;">Abone Ol ve Yeni <span style="color:var(--secondary);">Tariflerden</span> Haberdar Ol</h2>
+                <p class="mb-4" style="color:rgba(255,255,255,.78);">Yeni tariflerden ve güncellemelerden ilk sen haberdar ol.</p>
+                <div class="nl-form-wrap">
+                    <input class="nlinput" type="email" id="nlEmail" placeholder="E-posta adresini yaz..." />
+                    <button class="nlbtn" id="nlBtn"><i class="fas fa-paper-plane me-1"></i>Abone Ol</button>
+                </div>
+                <p style="color:rgba(255,255,255,.45);font-size:.76rem;margin-top:11px;"><i class="fas fa-lock me-1"></i>Spam yok, istediğin zaman ayrılabilirsin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+       FIX 6 � CONTACT FORM
+       ============================================================ -->
+    <section id="contact-section">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="slbl">İletişim</span>
+                <h2 class="stitle">Bize <span>Ulaş</span></h2>
+                <div class="sline"></div>
+                <p class="sdesc mx-auto" style="max-width:480px;">Soru, öneri veya iş birliği için bize mesaj gönderebilirsin.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="ctdark">
+                        <h4>Bize Yaz</h4>
+                        <p class="ctsub">Mesajlara en kısa sürede dönüş yapıyoruz.</p>
+                        <div class="ctitem">
+                            <div class="cticon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="ctinfo"><strong>Adres</strong><span>Kadıköy, İstanbul<br />Türkiye</span></div>
+                        </div>
+                        <div class="ctitem">
+                            <div class="cticon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="ctinfo"><strong>Telefon</strong><span>+90 212 000 00 00</span></div>
+                        </div>
+                        <div class="ctitem">
+                            <div class="cticon"><i class="fas fa-envelope"></i></div>
+                            <div class="ctinfo"><strong>E-posta</strong><span>info@lezzetsofrasi.com</span></div>
+                        </div>
+                        <div class="ctitem">
+                            <div class="cticon"><i class="fas fa-clock"></i></div>
+                            <div class="ctinfo"><strong>Çalışma Saatleri</strong><span>Çarşamba - Pazar: 09:00 - 23:00</span></div>
+                        </div>
+                        <div class="ctsocrow">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8" data-aos="fade-left">
+                    <div class="fcard">
+                        <div class="row g-3">
+                            <div class="col-sm-6"><label class="flbl">Ad Soyad *</label><input type="text" class="fctrl" placeholder="John Doe" /></div>
+                            <div class="col-sm-6"><label class="flbl">E-posta Adresi *</label><input type="email" class="fctrl" placeholder="you@email.com" /></div>
+                            <div class="col-sm-6"><label class="flbl">Telefon Numarası</label><input type="tel" class="fctrl" placeholder="+1 (800) 000-0000" /></div>
+                            <div class="col-sm-6">
+                                <label class="flbl">Konu *</label>
+                                <select class="fctrl">
+                                    <option>Genel Soru</option>
+                                    <option>Etkinlik ve Organizasyon</option>
+                                    <option>Geri Bildirim</option>
+                                    <option>İş Birliği</option>
+                                    <option>Medya ve Basın</option>
+                                </select>
+                            </div>
+                            <div class="col-12"><label class="flbl">Mesaj *</label><textarea class="fctrl" rows="5" placeholder="Mesajını buraya yaz..."></textarea></div>
+                            <div class="col-12"><button class="btn-red" id="ctcBtn"><i class="fas fa-paper-plane"></i>Mesaj Gönder</button></div>
+                        </div>
+                        <div class="sucmsg" id="ctcOk">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Mesaj gönderildi! En kısa sürede dönüş yapılacaktır.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="fnm">Lezzet <span>Sofrası</span></div>
+                    <p class="fdesc">Lezzet Sofrası; pratik, anlaşılır ve lezzetli tarifleri bir araya getiren modern bir yemek sitesidir.</p>
+                    <div class="fsoc">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="ftit">Hızlı Linkler</div>
+                    <ul class="flinks ps-0">
+                        <li><a href="#hero"><i class="fas fa-chevron-right"></i>Ana Sayfa</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i>Hakkımızda</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Yemeklerimiz</a></li>
+                        <li><a href="#reservation"><i class="fas fa-chevron-right"></i>Rezervasyon</a></li>
+                        <li><a href="#blog"><i class="fas fa-chevron-right"></i>Blog</a></li>
+                        <li><a href="#contact-section"><i class="fas fa-chevron-right"></i>İletişim</a></li>
+                        <li><a href="/Admin/Login"><i class="fas fa-chevron-right"></i>Yönetim Paneli</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="ftit">Yemeklerimiz</div>
+                    <ul class="flinks ps-0">
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Burgerler</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Pizza</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Fried Tavuk</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Dürümler &amp; Rolls</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Makarna</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-right"></i>Tatlılar</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ftit">İletişim</div>
+                    <div class="fci">
+                        <div class="fciico"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="fciinfo"><strong>Adres</strong>Kadıköy, İstanbul / Türkiye</div>
+                    </div>
+                    <div class="fci">
+                        <div class="fciico"><i class="fas fa-phone-alt"></i></div>
+                        <div class="fciinfo"><strong>Telefon</strong>+90 212 000 00 00</div>
+                    </div>
+                    <div class="fci">
+                        <div class="fciico"><i class="fas fa-envelope"></i></div>
+                        <div class="fciinfo"><strong>E-posta</strong>info@lezzetsofrasi.com</div>
+                    </div>
+                    <div class="fci">
+                        <div class="fciico"><i class="fas fa-clock"></i></div>
+                        <div class="fciinfo"><strong>Saat</strong>Wed - Sun: 09 AM - 11 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fbot">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <p>&copy 2026 <span>Sarab Restaurant</span>. All Rights Reserved by <a target="_blank" class="mx-0 fw-bold text-success" href="https://bestwpware.com/">Bestwpware</a>. Made with <span><i class="fas fa-heart"></i></span>  <br>Distributed by <a target="_blank" class="mx-0 fw-bold text-success" href="https://themewagon.com">ThemeWagon</a></p>
+                    <div><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Floating cart -->
+    <!-- <div class="cartfl"><i class="fas fa-shopping-cart"></i><span>My Cart</span><div class="ccount" id="cartCount">0</div></div> -->
+    <!-- Back to top -->
+    <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- jQuery -->
+    <script src="@Url.Content("~/js/jquery-3.7.1.min.js")"></script>
+    <!-- Bootstrap 5 -->
+    <script src="@Url.Content("~/js/bootstrap.bundle.min.js")"></script>
+    <!-- AOS -->
+    <script src="@Url.Content("~/js/aos.js")"></script>
+    <!-- Swiper -->
+    <script src="@Url.Content("~/js/swiper-bundle.min.js")"></script>
+    <!-- CounterUp -->
+    <script src="@Url.Content("~/js/jquery.magnific-popup.min.js")"></script>
+    <!-- Main js -->
+    <script src="@Url.Content("~/js/main.js")"></script>
+</body>
+</html>

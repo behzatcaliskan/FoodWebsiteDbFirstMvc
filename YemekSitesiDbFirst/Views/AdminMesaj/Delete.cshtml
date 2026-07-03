@@ -1,0 +1,46 @@
+﻿@model YemekSitesiDbFirst.Models.Mesajlar
+
+@{
+    ViewData["Title"] = "Mesaj Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Mesaj Sil</h1>
+
+<div class="alert alert-danger">
+    Bu mesajı silmek istediğine emin misin?
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ad Soyad</th>
+        <td>@Model.AdSoyad</td>
+    </tr>
+
+    <tr>
+        <th>Mail</th>
+        <td>@Model.Mail</td>
+    </tr>
+
+    <tr>
+        <th>Konu</th>
+        <td>@Model.Konu</td>
+    </tr>
+
+    <tr>
+        <th>Mesaj</th>
+        <td>@Model.MesajIcerik</td>
+    </tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.MesajId" />
+
+    <button type="submit" class="btn btn-danger">
+        Sil
+    </button>
+
+    <a href="/AdminMesaj/Index" class="btn btn-secondary">
+        Vazgeç
+    </a>
+</form>

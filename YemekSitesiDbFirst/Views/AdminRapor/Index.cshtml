@@ -1,0 +1,152 @@
+﻿@{
+    ViewData["Title"] = "Raporlama";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mt-4">Raporlama</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Genel Site Raporları</li>
+</ol>
+
+<div class="row">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+            <div class="card-body">
+                Toplam Kategori
+                <h3>@ViewBag.ToplamKategori</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">
+                Toplam Yemek
+                <h3>@ViewBag.ToplamYemek</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">
+                Aktif Yemek
+                <h3>@ViewBag.AktifYemek</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-danger text-white mb-4">
+            <div class="card-body">
+                Pasif Yemek
+                <h3>@ViewBag.PasifYemek</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-info text-white mb-4">
+            <div class="card-body">
+                Toplam Mesaj
+                <h3>@ViewBag.ToplamMesaj</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-secondary text-white mb-4">
+            <div class="card-body">
+                Toplam Yorum
+                <h3>@ViewBag.ToplamYorum</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success text-white mb-4">
+            <div class="card-body">
+                Onaylı Yorum
+                <h3>@ViewBag.OnayliYorum</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-warning text-white mb-4">
+            <div class="card-body">
+                Onay Bekleyen Yorum
+                <h3>@ViewBag.OnayBekleyenYorum</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                Kategoriye Göre Yemek Sayısı
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Yemek Sayısı</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in ViewBag.KategoriRapor)
+                        {
+                            <tr>
+                                <td>@item.KategoriAd</td>
+                                <td>@item.YemekSayisi</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                Son Eklenen Yemekler
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Yemek ID</th>
+                            <th>Yemek Adı</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in ViewBag.SonYemekler)
+                        {
+                            <tr>
+                                <td>@item.YemekId</td>
+                                <td>@item.YemekAd</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
